@@ -18,7 +18,6 @@ class SongsApp < Sinatra::Base
 
   # new
   get '/songs/new' do
-    @song = Song.new
     erb(:"songs/new")
   end
 
@@ -45,17 +44,17 @@ class SongsApp < Sinatra::Base
   end
 
   # update
-  put '/songs/:id' do
+  post '/songs/:id/update' do
     @song = Song.find(params[:id])
-    if @song.update_attributes(params[:song])
+    if @song.update(params[:song])
       redirect("/songs")
     else
-      erb(:"songs/new")
+      erb(:"songs/edit")
     end
   end
 
   # destroy
-  delete '/songs/:id' do
+  post '/songs/:id/delete' do
     @song = Song.find(params[:id])
     if @song.destroy
       redirect('/songs')

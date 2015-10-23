@@ -1,1 +1,15 @@
 <h2>Edit Song</h2>
+
+<form class="song" id="add-song" method="POST" action="/songs/<%= @song.id %>">
+  <div class="form-group">
+    <label for="song_title">Title:</label>
+    <input class="form-control" type="text" name="song[title]" value="<%= @song.title %>">
+  </div>
+
+  <div class="form-group">
+    <label for="song_published_in">Year Published:</label>
+    <input  class="form-control" type="text" name="song[published_in]" value="<%= @song.published_in %>">
+  </div>
+
+  <button class="btn btn-primary" type="submit">Edit Song</button>
+</form>
